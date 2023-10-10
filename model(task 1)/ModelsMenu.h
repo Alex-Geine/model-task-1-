@@ -26,7 +26,12 @@ public:
 	ModelSetter* modSet;
 	CListBox ModelsItems;
 	Controller* control;
+	
 	afx_msg void OnBnClickedButton1();
 	afx_msg void OnBnClickedButton2();
-	int id = 0;
+	
+	afx_msg void OnBnClickedButton3();
+	afx_msg void OnBnClickedButton6();
+	CMFCColorButton colorCheck;
+	afx_msg void OnLbnSelchangeList1();
 };

@@ -3,7 +3,7 @@
 
 #define _USE_MATH_DEFINES
 #include  <math.h>
-
+#define NOT_UPDATE -777
 
 
 //функцкия управления отрисовкой
@@ -25,13 +25,20 @@ void Model::UpdatePar(
 	double niu,
 	double k
 	) {
-	this->l = L;
-	this->a = A;
-	this->w = W;
-	this->f0 = f0;
-	this->df0 = df0;
-	this->niu = niu;
-	this->k = k;
+	if(L != NOT_UPDATE)
+		this->l = L;
+	if (A != NOT_UPDATE)
+		this->a = A;
+	if (W != NOT_UPDATE)	
+		this->w = W;
+	if (f0 != NOT_UPDATE)
+		this->f0 = f0;
+	if (df0 != NOT_UPDATE)
+		this->df0 = df0;
+	if (niu != NOT_UPDATE)
+		this->niu = niu;
+	if (k != NOT_UPDATE)
+		this->k = k;
 
 	Y0 = l;
 	T0 = sqrt(10 / l);
@@ -63,6 +70,10 @@ void Model::RK() {
 double Model::V(double df) {
 	return df0;
 }
+void Model::Clear() {
+	maxf0 = 0;
+	maxdf0 = 0;
+}
 
 
 
@@ -89,6 +100,19 @@ void Model::GetPar(CRITICAL_SECTION* cs,double& l, double& a, double& w, double&
 	Y0 = this->Y0;
 	maxf0 = this->maxf0;
 	maxdf0 = this->maxdf0;
+
+	LeaveCriticalSection(cs);
+}
+//функция, возвращающая параметры системы для апдейта
+void Model::GetPar(CRITICAL_SECTION* cs, double& l, double& a, double& w, double& f0, double& df0, double& niu, double& k) {
+	EnterCriticalSection(cs);
+	l = this->l;	
+	a = this->a;
+	w = this->w;
+	f0 = this->f0;
+	df0 = this->df0;
+	niu = this->niu;
+	k = this->k;	
 
 	LeaveCriticalSection(cs);
 }

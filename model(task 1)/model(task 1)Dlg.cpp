@@ -55,13 +55,7 @@ END_MESSAGE_MAP()
 
 Cmodeltask1Dlg::Cmodeltask1Dlg(CWnd* pParent /*=nullptr*/)
 	: CDialogEx(IDD_MODELTASK_1_DIALOG, pParent)
-	, L(1)
-	, A(0.1)
-	, W(0.1)
-	, f0(30)
-	, df0(0)
-	, niu(0.1)
-	, k(0)
+
 {
 	m_hIcon = AfxGetApp()->LoadIcon(IDR_MAINFRAME);
 }
@@ -71,26 +65,33 @@ void Cmodeltask1Dlg::DoDataExchange(CDataExchange* pDX)
 	CDialogEx::DoDataExchange(pDX);
 
 	DDX_Control(pDX, IDC_MAINGRAPH, MainGraph);
-	DDX_Text(pDX, IDC_EDIT1, L);
-	DDX_Text(pDX, IDC_EDIT2, A);
-	DDX_Text(pDX, IDC_EDIT3, W);
-	DDX_Text(pDX, IDC_EDIT4, f0);
-	DDX_Text(pDX, IDC_EDIT5, df0);
-	DDX_Text(pDX, IDC_EDIT6, niu);
-	DDX_Text(pDX, IDC_EDIT7, k);
+	
 }
 
 BEGIN_MESSAGE_MAP(Cmodeltask1Dlg, CDialogEx)
 	ON_WM_SYSCOMMAND()
 	ON_WM_PAINT()
 	ON_WM_QUERYDRAGICON()
-	ON_BN_CLICKED(IDOK, &Cmodeltask1Dlg::OnBnClickedOk)
+//	ON_BN_CLICKED(IDOK, &Cmodeltask1Dlg::OnBnClickedOk)
 	ON_EN_CHANGE(IDC_EDIT2, &Cmodeltask1Dlg::OnEnChangeEdit2)
 	ON_WM_TIMER()
-	ON_BN_CLICKED(IDCANCEL, &Cmodeltask1Dlg::OnBnClickedCancel)
+//	ON_BN_CLICKED(IDCANCEL, &Cmodeltask1Dlg::OnBnClickedCancel)
 	ON_BN_CLICKED(IDC_BUTTON1, &Cmodeltask1Dlg::OnBnClickedButton1)
 	ON_BN_CLICKED(IDC_BUTTON2, &Cmodeltask1Dlg::OnBnClickedButton2)
 	ON_BN_CLICKED(IDC_BUTTON3, &Cmodeltask1Dlg::OnBnClickedButton3)
+	ON_BN_CLICKED(IDC_BUTTON4, &Cmodeltask1Dlg::OnBnClickedButton4)
+	ON_BN_CLICKED(IDC_BUTTON5, &Cmodeltask1Dlg::OnBnClickedButton5)
+	ON_BN_CLICKED(IDC_BUTTON6, &Cmodeltask1Dlg::OnBnClickedButton6)
+	ON_BN_CLICKED(IDC_BUTTON7, &Cmodeltask1Dlg::OnBnClickedButton7)
+	ON_BN_CLICKED(IDC_BUTTON8, &Cmodeltask1Dlg::OnBnClickedButton8)
+	ON_BN_CLICKED(IDC_BUTTON9, &Cmodeltask1Dlg::OnBnClickedButton9)
+	ON_BN_CLICKED(IDC_BUTTON10, &Cmodeltask1Dlg::OnBnClickedButton10)
+	ON_BN_CLICKED(IDC_BUTTON11, &Cmodeltask1Dlg::OnBnClickedButton11)
+	ON_BN_CLICKED(IDC_BUTTON12, &Cmodeltask1Dlg::OnBnClickedButton12)
+	ON_BN_CLICKED(IDC_BUTTON13, &Cmodeltask1Dlg::OnBnClickedButton13)
+	ON_BN_CLICKED(IDC_BUTTON14, &Cmodeltask1Dlg::OnBnClickedButton14)
+	ON_BN_CLICKED(IDC_BUTTON16, &Cmodeltask1Dlg::OnBnClickedButton16)
+	ON_BN_CLICKED(IDC_BUTTON15, &Cmodeltask1Dlg::OnBnClickedButton15)
 END_MESSAGE_MAP()
 
 
@@ -141,10 +142,11 @@ BOOL Cmodeltask1Dlg::OnInitDialog()
 	por = new Portret(m_Parent);
 	por->Create(IDD_DIALOG2, m_Parent);
 	por->PhasePor.GetContr(control);
-	por->PhasePor.drawerID = 2;
+	por->PhasePor.drawerID = 3;
 
 	menu = new ModelsMenu(m_Parent, control);
 	menu->Create(IDD_DIALOG3, m_Parent);
+	timer = SetTimer(1, 10, 0);
 	
 	return TRUE;  // возврат значения TRUE, если фокус не передан элементу управления
 }
@@ -200,20 +202,13 @@ HCURSOR Cmodeltask1Dlg::OnQueryDragIcon()
 
 
 
-void Cmodeltask1Dlg::OnBnClickedOk()
-{
-	control->Clear();
-	UpdateData(true);
-	control->UpdPar(L, A, W, f0, df0, niu, k);
-	control->Start();
-
-	phd->Phase_Gr.draw = 1;
-	por->PhasePor.draw = 1;
-	//Установка таймера
-	timer = SetTimer(1, 10, 0);
-	
-	
-}
+//void Cmodeltask1Dlg::OnBnClickedOk()
+//{	
+//	
+//	
+//	
+//	
+//}
 
 
 void Cmodeltask1Dlg::OnEnChangeEdit2()
@@ -251,13 +246,13 @@ void Cmodeltask1Dlg::OnTimer(UINT_PTR nIDEvent)
 }
 
 
-void Cmodeltask1Dlg::OnBnClickedCancel()
-{
+//void Cmodeltask1Dlg::OnBnClickedCancel()
+//{
 	// TODO: добавьте свой код обработчика уведомлений
 	//CDialogEx::OnCancel();
-	CDialog::CloseWindow();
-	exit(0);
-}
+//	CDialog::CloseWindow();
+//	exit(0);
+//}
 
 //фазовая траектория
 void Cmodeltask1Dlg::OnBnClickedButton1()
@@ -287,5 +282,99 @@ void Cmodeltask1Dlg::OnBnClickedButton2()
 void Cmodeltask1Dlg::OnBnClickedButton3()
 {
 	menu->ShowWindow(1);
+	// TODO: добавьте свой код обработчика уведомлений
+}
+
+//отчистить маятники
+void Cmodeltask1Dlg::OnBnClickedButton4()
+{
+	control->Clear();
+	// TODO: добавьте свой код обработчика уведомлений
+}
+
+
+//Вверх
+void Cmodeltask1Dlg::OnBnClickedButton5()
+{
+	control->yst -= control->maxdf0 * 0.1 / 2;
+}
+
+//вниз
+void Cmodeltask1Dlg::OnBnClickedButton6()
+{
+	control->yst += control->maxdf0 * 0.1 / 2;
+}
+
+//вправо
+void Cmodeltask1Dlg::OnBnClickedButton7()
+{
+	control->xst -= control->maxf0 * 0.01 / 2;
+
+	// TODO: добавьте свой код обработчика уведомлений
+}
+
+//влево
+
+void Cmodeltask1Dlg::OnBnClickedButton8()
+{
+	control->xst += control->maxf0 * 0.01 / 2;
+	// TODO: добавьте свой код обработчика уведомлений
+}
+
+//меньше
+void Cmodeltask1Dlg::OnBnClickedButton9()
+{
+	control->scalegr -= 0.1;
+	// TODO: добавьте свой код обработчика уведомлений
+}
+
+
+//Больше
+void Cmodeltask1Dlg::OnBnClickedButton10()
+{
+	control->scalegr += 0.1;
+	// TODO: добавьте свой код обработчика уведомлений
+}
+
+//вверх для траектории
+void Cmodeltask1Dlg::OnBnClickedButton11()
+{
+	control->ystTr -= control->maxdf0 * 0.1 / 2;
+	// TODO: добавьте свой код обработчика уведомлений
+}
+
+//Вниз для траектории
+void Cmodeltask1Dlg::OnBnClickedButton12()
+{
+	control->ystTr += control->maxdf0 * 0.1 / 2;
+	// TODO: добавьте свой код обработчика уведомлений
+}
+
+//вправо для траектории
+void Cmodeltask1Dlg::OnBnClickedButton13()
+{
+	control->xstTr -= control->maxf0 * 0.01 / 2;
+	// TODO: добавьте свой код обработчика уведомлений
+}
+
+
+//Влево для траектории
+void Cmodeltask1Dlg::OnBnClickedButton14()
+{
+	control->xstTr += control->maxf0 * 0.01 / 2;
+	// TODO: добавьте свой код обработчика уведомлений
+}
+
+//Больше для траектории
+void Cmodeltask1Dlg::OnBnClickedButton16()
+{
+	control->scalegrTr += 0.1;
+	// TODO: добавьте свой код обработчика уведомлений
+}
+
+//меньше для траектории
+void Cmodeltask1Dlg::OnBnClickedButton15()
+{
+	control->scalegrTr -= 0.1;
 	// TODO: добавьте свой код обработчика уведомлений
 }

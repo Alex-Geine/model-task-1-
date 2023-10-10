@@ -47,10 +47,11 @@ BOOL Portret::Create(UINT lpszTemplateName, CWnd* pParentWnd)
 }
 
 void Portret::GetMes() {
+	PhasePor.draw = 1;
 	PhasePor.Invalidate(false);
 
 	while (PeekMessage(&msg, 0, WM_PAINT, WM_PAINT, PM_REMOVE))
-	{
+	{    
 		TranslateMessage(&msg);
 		DispatchMessage(&msg);
 	}

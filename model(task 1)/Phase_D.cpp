@@ -36,7 +36,8 @@ void Phase_D::DoDataExchange(CDataExchange* pDX)
 	ON_WM_SYSCOMMAND()
 	
 	ON_WM_PAINT()
-END_MESSAGE_MAP()
+//	 ON_WM_KEYDOWN()
+ END_MESSAGE_MAP()
 
 
 // Обработчики сообщений Phase_D
@@ -62,7 +63,8 @@ BOOL Phase_D::Create(UINT lpszTemplateName, CWnd* pParentWnd)
 
 
 void Phase_D::GetMes() {
-	Phase_Gr.Invalidate(false);	
+	Phase_Gr.draw = 1;
+	Phase_Gr.Invalidate(false);
 
 	while (PeekMessage(&msg, 0, WM_PAINT, WM_PAINT, PM_REMOVE))
 	{
@@ -78,3 +80,4 @@ void Phase_D::OnPaint()
 	// TODO: добавьте свой код обработчика сообщений
 	// Не вызывать CDialogEx::OnPaint() для сообщений рисования
 }
+

@@ -40,4 +40,5 @@ public:
 	
 	Drawer Phase_Gr;
 	afx_msg void OnPaint();
+//	afx_msg void OnKeyDown(UINT nChar, UINT nRepCnt, UINT nFlags);
 };

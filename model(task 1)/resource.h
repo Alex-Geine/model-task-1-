@@ -24,16 +24,30 @@
 #define IDC_BUTTON2                     1009
 #define IDC_PHASE_POR                   1010
 #define IDC_BUTTON3                     1010
+#define IDC_BUTTON4                     1011
 #define IDC_LIST1                       1012
+#define IDC_BUTTON5                     1012
 #define IDC_MFCCOLORBUTTON1             1013
+#define IDC_BUTTON6                     1013
+#define IDC_BUTTON7                     1014
+#define IDC_MFCCOLORBUTTON2             1014
+#define IDC_BUTTON8                     1015
+#define IDC_BUTTON9                     1016
+#define IDC_BUTTON10                    1017
+#define IDC_BUTTON11                    1018
+#define IDC_BUTTON12                    1019
+#define IDC_BUTTON13                    1020
+#define IDC_BUTTON14                    1021
+#define IDC_BUTTON15                    1022
+#define IDC_BUTTON16                    1023
 
 // Next default values for new objects
 // 
 #ifdef APSTUDIO_INVOKED
 #ifndef APSTUDIO_READONLY_SYMBOLS
-#define _APS_NEXT_RESOURCE_VALUE        139
+#define _APS_NEXT_RESOURCE_VALUE        140
 #define _APS_NEXT_COMMAND_VALUE         32771
-#define _APS_NEXT_CONTROL_VALUE         1014
+#define _APS_NEXT_CONTROL_VALUE         1015
 #define _APS_NEXT_SYMED_VALUE           101
 #endif
 #endif

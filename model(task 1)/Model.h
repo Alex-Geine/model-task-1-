@@ -9,8 +9,8 @@ private:
 		w, //частота подвеса
 		f0, //начальное отклонение
 		df0, //начальная угловая скорость
-		t, //время
-		h = 0.001, //шаг интегрирования
+		t = 0, //время
+		h = 0.00001, //шаг интегрирования
 		T0, //коэффициент времени
 		Y0, //коэффициент координаты
 		niu, //коэффициент вязкого трения
@@ -25,6 +25,8 @@ public:
 
 	//функция, возвращающая параметры системы
 	void GetPar(CRITICAL_SECTION*cs, double& l, double& a, double& w, double& f0, double& df0, double& t, double &T0, double& Y0, double& maxf0, double& maxdf0);
+	//функция, возвращающая параметры системы для апдейта
+	void GetPar(CRITICAL_SECTION* cs, double& l, double& a, double& w, double& f0, double& df0,  double&niu, double&k);
 
 	//функция обновления параметров
 	void UpdatePar(double L,
@@ -37,6 +39,8 @@ public:
 
 	//Метод Рунге-Кутты
 	void RK();
+
+	void Clear();
 
 	//Функция производной от f
 	double V(double df);

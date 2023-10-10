@@ -1,6 +1,10 @@
 ﻿#pragma once
 #include "afxdialogex.h"
 #include "Controller.h"
+#include <iostream>
+#include <string>
+
+using namespace std;
 
 
 
@@ -24,6 +28,7 @@ protected:
 
 	DECLARE_MESSAGE_MAP()
 public:
+	
 	Controller* control;
 	double L;
 	double A;
@@ -32,6 +37,23 @@ public:
 	double df0;
 	double niu;
 	double k;
+
+	double Lpast;
+	double Apast;
+	double wpast;
+	double f0past;
+	double df0past;
+	double niupast;
+	double kpast;
+	COLORREF pcol = NULL;
+
+	int id = 0;
+	CListBox* ModelsItems;
+	int idUpd;
+	void SetValues();
+	bool upd = false;
+	
 	CMFCColorButton color;
 	afx_msg void OnBnClickedOk();
+	virtual void OnCancel();
 };
